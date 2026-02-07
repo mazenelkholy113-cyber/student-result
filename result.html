@@ -1,41 +1,80 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>نتيجة الطالب - جامعة حلوان</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body{ background:#f4f6f9; font-family: Arial, sans-serif; }
-    .top-bar{
-      background:#fff;
-      border-bottom:1px solid #ddd;
-      padding:14px 24px;
-      font-weight:bold;
-    }
-    .card{
-      margin-top:40px;
-      border-radius:14px;
-    }
-    .gpa-box{
-      border:2px solid #28a745;
-      border-radius:10px;
-      padding:14px;
-      color:#28a745;
-      font-weight:bold;
-      font-size:18px;
-    }
-    .status{
-      color:#28a745;
-      font-weight:bold;
-      font-size:18px;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>نتيجة الطالب - جامعة حلوان</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{ background:#f4f6f9; font-family: Arial, sans-serif; }
+
+/* شريط علوي بسيط */
+.top-bar{
+  background:#ffffff;
+  border-bottom:1px solid #ddd;
+  padding:14px 24px;
+  font-weight:bold;
+}
+
+/* الكارت */
+.card{
+  margin-top:40px;
+  border-radius:14px;
+}
+
+/* GPA والحالة */
+.gpa-box{
+  border:2px solid #28a745;
+  border-radius:10px;
+  padding:14px;
+  color:#28a745;
+  font-weight:bold;
+  font-size:18px;
+}
+.status{
+  color:#28a745;
+  font-weight:bold;
+  font-size:18px;
+}
+
+/* Appeals (كلمة صغيرة ومخفية بصريًا) */
+.appeals-link{
+  margin-top:18px;
+  font-size:12px;
+  color:#999;
+  cursor:pointer;
+  user-select:none;
+}
+.appeals-link:hover{
+  color:#666;
+  text-decoration:underline;
+}
+
+/* صندوق خطاب التظلم */
+.appeal-box{
+  margin-top:16px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  padding:20px;
+  background:#ffffff;
+  display:none;
+}
+.appeal-box h6{
+  font-weight:bold;
+  margin-bottom:12px;
+}
+</style>
 </head>
+
 <body>
 
 <script>
 if(!sessionStorage.getItem("loggedIn")){
   window.location.href="index.html";
+}
+function toggleAppeal(){
+  const box = document.getElementById("appealBox");
+  box.style.display = (box.style.display === "block") ? "none" : "block";
 }
 </script>
 
@@ -58,7 +97,7 @@ if(!sessionStorage.getItem("loggedIn")){
       <strong>الكلية:</strong> كلية الحاسبات والذكاء الاصطناعي – جامعة حلوان
     </div>
 
-    <!-- جدول المواد (متوافق مع GPA = 3.1) -->
+    <!-- جدول المواد -->
     <table class="table table-bordered text-center align-middle">
       <thead class="table-light">
         <tr>
@@ -69,48 +108,12 @@ if(!sessionStorage.getItem("loggedIn")){
         </tr>
       </thead>
       <tbody>
-        <!-- B+ (3.3) -->
-        <tr>
-          <td>English Language I</td>
-          <td>2.0</td>
-          <td>85</td>
-          <td>B+</td>
-        </tr>
-        <!-- B+ (3.3) -->
-        <tr>
-          <td>Probability & Statistics</td>
-          <td>3.0</td>
-          <td>82</td>
-          <td>B+</td>
-        </tr>
-        <!-- B (3.0) -->
-        <tr>
-          <td>Introduction to Computer Science</td>
-          <td>3.0</td>
-          <td>78</td>
-          <td>B</td>
-        </tr>
-        <!-- B (3.0) -->
-        <tr>
-          <td>Mathematics I</td>
-          <td>3.0</td>
-          <td>80</td>
-          <td>B</td>
-        </tr>
-        <!-- A- (3.7) -->
-        <tr>
-          <td>Physics</td>
-          <td>3.0</td>
-          <td>88</td>
-          <td>A-</td>
-        </tr>
-        <!-- C+ (2.3) -->
-        <tr>
-          <td>Information Systems Fundamentals</td>
-          <td>3.0</td>
-          <td>74</td>
-          <td>C+</td>
-        </tr>
+        <tr><td>English Language I</td><td>2.0</td><td>85</td><td>B+</td></tr>
+        <tr><td>Probability & Statistics</td><td>3.0</td><td>82</td><td>B+</td></tr>
+        <tr><td>Introduction to Computer Science</td><td>3.0</td><td>78</td><td>B</td></tr>
+        <tr><td>Mathematics I</td><td>3.0</td><td>80</td><td>B</td></tr>
+        <tr><td>Physics</td><td>3.0</td><td>88</td><td>A-</td></tr>
+        <tr><td>Information Systems Fundamentals</td><td>3.0</td><td>74</td><td>C+</td></tr>
       </tbody>
     </table>
 
@@ -122,13 +125,44 @@ if(!sessionStorage.getItem("loggedIn")){
 
     <div class="row mt-4">
       <div class="col-md-6">
-        <div class="gpa-box text-center">
-          GPA: 3.1
-        </div>
+        <div class="gpa-box text-center">GPA: 3.1</div>
       </div>
       <div class="col-md-6 d-flex align-items-center justify-content-center">
         <div class="status">Status: PASSED</div>
       </div>
+    </div>
+
+    <!-- Appeals (كلمة صغيرة) -->
+    <div class="appeals-link" onclick="toggleAppeal()">
+      Appeals
+    </div>
+
+    <!-- خطاب التظلم -->
+    <div id="appealBox" class="appeal-box">
+      <h6>Official Statement – Appeal Outcome</h6>
+      <p>
+        With reference to the appeal submitted by the student
+        <strong>Maazen Ibrahim Abdelmonem Hussein</strong>
+        (Student ID: <strong>20250798</strong>) regarding the course
+        <strong>English Language I</strong>, the competent review committee at the
+        Faculty of Computers and Artificial Intelligence – Helwan University
+        has re-evaluated the answer sheet.
+      </p>
+      <p>
+        Accordingly, the committee decided to amend the course result.
+        The English Language score has been <strong>re-recorded</strong> and
+        changed from <strong>48 (Fail)</strong> to <strong>85</strong> with a
+        grade of <strong>B+</strong>.
+      </p>
+      <p>
+        This amendment has been officially approved and reflected in the
+        student’s cumulative GPA.
+      </p>
+      <p class="mt-3">
+        <strong>Sincerely,</strong><br>
+        Education Affairs Department<br>
+        Helwan University
+      </p>
     </div>
 
   </div>
