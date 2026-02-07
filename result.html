@@ -7,48 +7,56 @@
 
 <style>
 body{
-  background:#f4f6f9;
+  background:#f2f4f8;
   font-family: Arial, sans-serif;
 }
 
 /* الهيدر */
 .header{
-  background:#0d6efd;
+  background:linear-gradient(90deg,#0d6efd,#0b5ed7);
   color:#fff;
-  padding:15px;
+  padding:18px 25px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+}
+
+.header h4{
+  margin:0;
+  font-weight:bold;
 }
 
 .header img{
   height:55px;
 }
 
-.header h4{
-  margin:0;
-}
-
-/* كارت النتيجة */
+/* الكارت */
 .result-card{
   background:#fff;
-  margin-top:30px;
+  margin:30px auto;
   padding:25px;
-  border-radius:10px;
-  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.1);
 }
 
 .table th{
-  background:#f1f1f1;
+  background:#eef2f7;
+  font-weight:bold;
 }
 
+.table td, .table th{
+  vertical-align:middle;
+}
+
+/* صندوق المعدل */
 .gpa-box{
-  background:#e9f5ff;
-  border:2px solid #0d6efd;
-  border-radius:8px;
-  padding:15px;
-  font-size:18px;
+  background:#fff5f5;
+  border:2px solid #dc3545;
+  border-radius:10px;
+  padding:18px;
+  font-size:20px;
   font-weight:bold;
+  color:#dc3545;
 }
 </style>
 </head>
@@ -65,11 +73,13 @@ body{
 
   <div class="result-card">
 
-    <h5 class="text-center mb-4">النتائج الدراسية – الفصل الدراسي</h5>
+    <h5 class="text-center mb-4">النتائج الدراسية – فصل خريف 2025 / 2026</h5>
 
-    <p><strong>اسم الطالب:</strong> ماذن إبراهيم عبدالمنعم حسين</p>
-    <p><strong>ID:</strong> 20250798</p>
-    <p><strong>الكلية:</strong> الحاسبات والذكاء الاصطناعي – جامعة حلوان</p>
+    <div class="row mb-3">
+      <div class="col-md-4"><strong>اسم الطالب:</strong> ماذن إبراهيم عبدالمنعم حسين</div>
+      <div class="col-md-4"><strong>ID:</strong> 20250798</div>
+      <div class="col-md-4"><strong>الكلية:</strong> الحاسبات والذكاء الاصطناعي – جامعة حلوان</div>
+    </div>
 
     <hr>
 
@@ -78,22 +88,61 @@ body{
         <thead>
           <tr>
             <th>المقرر</th>
-            <th>الساعات</th>
+            <th>الساعات المعتمدة</th>
             <th>الدرجة</th>
             <th>التقدير</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>اللغة الإنجليزية</td><td>2</td><td>78</td><td>B</td></tr>
-          <tr><td>الرياضيات</td><td>3</td><td>85</td><td>A</td></tr>
-          <tr><td>مقدمة في الحاسوب</td><td>3</td><td>80</td><td>B+</td></tr>
-          <tr><td>أساسيات نظم المعلومات</td><td>3</td><td>75</td><td>B</td></tr>
+          <tr>
+            <td>اللغة الإنجليزية I</td>
+            <td>2.0</td>
+            <td>72</td>
+            <td>ج+</td>
+          </tr>
+          <tr>
+            <td>الاحتمالات والإحصاء</td>
+            <td>3.0</td>
+            <td>76</td>
+            <td>ب</td>
+          </tr>
+          <tr>
+            <td>مقدمة في الحاسوب</td>
+            <td>3.0</td>
+            <td>57</td>
+            <td>د</td>
+          </tr>
+          <tr>
+            <td>الرياضيات 1</td>
+            <td>3.0</td>
+            <td>61</td>
+            <td>د+</td>
+          </tr>
+          <tr>
+            <td>الفيزياء</td>
+            <td>3.0</td>
+            <td>79</td>
+            <td>ب</td>
+          </tr>
+          <tr>
+            <td>أساسيات نظم المعلومات</td>
+            <td>3.0</td>
+            <td>56</td>
+            <td>د</td>
+          </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="gpa-box text-center mt-4">
-      المعدل التراكمي (GPA): <span class="text-primary">3.1</span>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <p><strong>إجمالي الساعات المكتسبة:</strong> 17.0</p>
+      </div>
+      <div class="col-md-6 text-end">
+        <div class="gpa-box text-center">
+          المعدل التراكمي (GPA): 3.1
+        </div>
+      </div>
     </div>
 
   </div>
